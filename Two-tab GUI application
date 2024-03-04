@@ -1,0 +1,45 @@
+import tkinter as tk
+from tkinter import ttk
+
+class MyApplication:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Complex GUI Application")
+        self.root.geometry("400x300")
+
+        # Create a notebook widget
+        self.notebook = ttk.Notebook(root)
+        self.notebook.pack(fill="both", expand=True)
+
+        # Create tabs
+        self.tab1 = tk.Frame(self.notebook)
+        self.tab2 = tk.Frame(self.notebook)
+
+        # Add tabs to notebook
+        self.notebook.add(self.tab1, text="Tab 1")
+        self.notebook.add(self.tab2, text="Tab 2")
+
+        # Create widgets for Tab 1
+        self.label1 = tk.Label(self.tab1, text="Welcome to Tab 1", font=("Helvetica", 16))
+        self.label1.pack(pady=10)
+
+        self.button1 = tk.Button(self.tab1, text="Click Me", command=self.display_message_tab1)
+        self.button1.pack(pady=5)
+
+        # Create widgets for Tab 2
+        self.label2 = tk.Label(self.tab2, text="Welcome to Tab 2", font=("Helvetica", 16))
+        self.label2.pack(pady=10)
+
+        self.button2 = tk.Button(self.tab2, text="Click Me", command=self.display_message_tab2)
+        self.button2.pack(pady=5)
+
+    def display_message_tab1(self):
+        print("Button in Tab 1 clicked")
+
+    def display_message_tab2(self):
+        print("Button in Tab 2 clicked")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = MyApplication(root)
+    root.mainloop()
